@@ -4,11 +4,14 @@ import com.mongodb.client.result.UpdateResult;
 import com.neo.repository.UserRepository;
 import com.neo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Example;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * Created by summer on 2017/5/5.
@@ -67,4 +70,17 @@ public class UserRepositoryImpl implements UserRepository {
         Query query=new Query(Criteria.where("id").is(id));
         mongoTemplate.remove(query,User.class);
     }
+    
+    /**
+     * 功能描述: 
+     * 〈找到所有〉
+     * @Author: 骏杰
+     * @Date: 2019/9/29 11:36
+     */
+    @Override
+    public List<User> findAll() {
+        return mongoTemplate.findAll(User.class);
+    }
+
+
 }

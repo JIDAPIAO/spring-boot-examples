@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.math.BigInteger;
+
 /**
  * Created by summer on 2017/5/5.
  */
@@ -20,7 +22,7 @@ public class UserRepositoryTest {
     @Test
     public void testSaveUser() throws Exception {
         User user=new User();
-        user.setId(2l);
+        user.setId(new BigInteger("2"));
         user.setUserName("小明");
         user.setPassWord("fffooo123");
         userDao.saveUser(user);
@@ -35,11 +37,19 @@ public class UserRepositoryTest {
     @Test
     public void updateUser(){
         User user=new User();
-        user.setId(2l);
+        user.setId(new BigInteger("2"));
         user.setUserName("天空");
         user.setPassWord("fffxxxx");
         userDao.updateUser(user);
     }
+
+
+    @Test
+   public void findAll(){
+       System.out.println(userDao.findAll() + "---------");
+   }
+
+
 
     @Test
     public void deleteUserById(){
